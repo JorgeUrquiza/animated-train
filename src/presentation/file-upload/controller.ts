@@ -13,7 +13,6 @@ export class FileUploadController {
     ){}
 
 
-
     //? Manejar errores
     private handleError = (error: unknown, res: Response) => { 
         if( error instanceof CustomError ) {
@@ -29,29 +28,24 @@ export class FileUploadController {
     uploadFile = (req: Request, res: Response) => {
 
         const type = req.params.type; // Tomar el tipo de archivo que se subira, type por que lo definimos en routes
-        const validTypes = ['users', 'products', 'categories']; // Tipos validos
-        if ( !validTypes.includes(type) ) {
-            return res.status(400)
-                .json({ error: `invalid type: ${ type}, valid ones ${ validTypes }` });
-        }
-        
-        if ( !req.files || Object.keys(req.files).length === 0 ) { // Si no se subio ningun archivo 
-            return res.status(400).json({ error: 'No files were uploaded.' });
-        }
-
-        const file = req.files.file as UploadedFile; // Tomar el archivo de la peticion 
+        const file = req.body.files.at(0) as UploadedFile; // Tomar el primer archivo que se subio 
 
         this.fileUploadService.uploadSingle( file, `uploads/${ type }` )  // Subir el archivo al servidor resolviendo la ruta donde se guardara
             .then( uploaded => res.json(uploaded) )
             .catch( error => this.handleError(error, res) ) // Manejar errores
-
     }
+
 
     //? Cargar varios archivos
     uploadMultipleFile = (req: Request, res: Response) => {
+        
+        const type = req.params.type; // Tomar el tipo de archivo que se subira, type por que lo definimos en routes
+        const files = req.body.files as UploadedFile[]; // Tomar los archivos que se subieron
 
-        res.json('upload Multiple File ');
-
+        this.fileUploadService.uploadMultiple( files, `uploads/${ type }` )  // Subir el archivo al servidor resolviendo la ruta donde se guardara
+            .then( uploaded => res.json(uploaded) )
+            .catch( error => this.handleError(error, res) ) // Manejar errores
     }
 
+    
 }

@@ -53,11 +53,18 @@ export class FileUploadService {
 
 
     //? Cargar varios archivos a la vez
-    public uploadMultiple(
-        file: any[],
+    async uploadMultiple(
+        files: UploadedFile[],
         folder: string = 'uploads',
         validExtensions: string[] = ['png', 'jpg', 'jpeg', 'gif'] // Extensiones permitidas
-    ) {}
+    ) {
+        const fileNames = await Promise.all( // Subir varios archivos a la vez
+            files.map( file => this.uploadSingle(file, folder, validExtensions) ) // Subir cada archivo
+        );
+
+        return fileNames; 
+
+    }
 
 
 

@@ -1,7 +1,7 @@
 # Rest Project + TypeScript
 
 Este proyecto previamente inicializado tiene todo lo necesario para trabajar con TypeScript, Express y Rest.
-Este proyecto es una tienda de usuarios implementada con TypeScript, Express y Rest. Proporciona una API REST para gestionar usuarios, productos y categorías.
+Este proyecto es una tienda de usuarios implementada con TypeScript, Express y Rest. Proporciona una API REST para gestionar usuarios, productos y categorías. Además, permite subir archivos a la base de datos y obtenerlos.
 
 
 ## Características
@@ -11,6 +11,7 @@ Este proyecto es una tienda de usuarios implementada con TypeScript, Express y R
 - Conexión a una base de datos MongoDB a través de Mongoose.
 - Sembrado de datos de prueba en la base de datos.
 - Configuración de variables de entorno a través de un archivo .env.
+- Funcionalidad de carga de archivos a la base de datos y recuperación de los mismos.
 
 
 ## Instalación
