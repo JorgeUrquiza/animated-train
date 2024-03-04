@@ -29,8 +29,10 @@ Este proyecto utiliza las siguientes dependencias:
 - `dotenv`: - Módulo que carga variables de entorno de un archivo .env a `process.env`.
 - `env-var`: - Biblioteca para acceder y validar variables de entorno.
 - `express`: - Framework web para Node.js.
+- `express-fileupload`: - Middleware para Express.js que facilita la carga de archivos.
 - `jsonwebtoken`: - Implementación de JSON Web Tokens.
 - `mongoose`: - ODM para MongoDB.
+- `uuid`: - Biblioteca en JavaScript para generar identificadores únicos universales (UUID).
 
 Y las siguientes dependencias de desarrollo:
 
